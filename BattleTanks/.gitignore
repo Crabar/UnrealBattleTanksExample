@@ -78,3 +78,6 @@ DerivedDataCache/*
 
 # Starter content
 */StarterContent/*
+
+# Output
+Output/**
