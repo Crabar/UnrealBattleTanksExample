@@ -38,26 +38,24 @@ void ATankPlayerController::AimTowardsCrosshair()
 	}
 
 	FVector HitLocation;
+	GetSightRayHitLocation(HitLocation);
 
 }
 
-bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
+FVector2D ATankPlayerController::GetCrosshairLocation() const
 {
 	int ViewportSizeX, ViewportSizeY;
 	GetViewportSize(ViewportSizeX, ViewportSizeY);
 	float CrosshairXLocation = 0.5;
 	float CrosshairYLocation = 1.0 / 3.0;
-	auto CrosshairLocation = FVector2D(ViewportSizeX * CrosshairXLocation, ViewportSizeY * CrosshairYLocation);
+	return FVector2D(ViewportSizeX * CrosshairXLocation, ViewportSizeY * CrosshairYLocation);
+}
 
-
-	FHitResult HitResult;
-	const auto IsHit = GetOwner()->ActorLineTraceSingle(HitResult);
-
-	if (IsHit)
-	{
-		HitLocation = HitResult.Location;
-		return true;
-	}
+bool ATankPlayerController::GetSightRayHitLocation(FVector& HitLocation) const
+{
+	auto CrosshairLocation = GetCrosshairLocation();
+	FVector CrosshairWorldLocation, CrosshairWorldDirection;
+	auto result = DeprojectScreenPositionToWorld(CrosshairLocation.X, CrosshairLocation.Y, CrosshairWorldLocation, CrosshairWorldDirection);
 
 	return false;
 }
