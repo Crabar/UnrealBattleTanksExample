@@ -31,6 +31,12 @@ void ATankAIController::BeginPlay()
 	}
 }
 
+void ATankAIController::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation());
+}
+
 ATank * ATankAIController::GetPlayerTank() const
 {
 	ATankPlayerController* TankPlayerController = Cast<ATankPlayerController>(GetWorld()->GetFirstPlayerController());

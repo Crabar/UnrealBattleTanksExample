@@ -25,4 +25,6 @@ private:
 public:
 	ATank* GetControlledTank() const;
 
+	UPROPERTY(EditAnywhere)
+	float AimRange = 10000.f;
 };
