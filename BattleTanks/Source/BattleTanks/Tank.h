@@ -30,6 +30,8 @@ protected:
 
 public:	
 
+	UFUNCTION(BlueprintCallable)
+	void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
 	void AimAt(FVector TargetLocation) const;
 	
 };

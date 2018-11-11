@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/StaticMeshComponent.h"
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
 
@@ -24,7 +25,12 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
+
 	void AimAt(FVector TargetLocation);
+
+private:
+	UStaticMeshComponent* Barrel = nullptr;
 		
 	
 };
