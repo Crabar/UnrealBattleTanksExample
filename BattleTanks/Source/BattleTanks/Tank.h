@@ -31,7 +31,7 @@ protected:
 public:	
 
 	UFUNCTION(BlueprintCallable)
-	void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
+	void SetBarrelReference(UTankBarrel* BarrelToSet);
 	void AimAt(FVector TargetLocation) const;
 
 	UPROPERTY(EditAnywhere, Category = Firing)
