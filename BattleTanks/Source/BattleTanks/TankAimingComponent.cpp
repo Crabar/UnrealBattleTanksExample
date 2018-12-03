@@ -53,8 +53,27 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 
 	UE_LOG(LogTemp, Warning, TEXT("Yaw is %f nad Pitch is %f"), DeltaRotator.Yaw, DeltaRotator.Pitch);
 
+	float RotationAngle = 0;
+
+	if (FMath::Abs(DeltaRotator.Yaw) > 180)
+	{
+		if (DeltaRotator.Yaw > 0)
+		{
+			RotationAngle = DeltaRotator.Yaw - 360;
+		}
+		else
+		{
+			RotationAngle = DeltaRotator.Yaw + 360;
+		}
+		
+	}
+	else
+	{
+		RotationAngle = DeltaRotator.Yaw;
+	}
+
 	Barrel->Elevate(DeltaRotator.Pitch);
-	Turret->Rotate(DeltaRotator.Yaw);
+	Turret->Rotate(RotationAngle);
 }
 
 void UTankAimingComponent::AimAt(FVector TargetLocation, float LaunchSpeed)
