@@ -35,6 +35,9 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	void SetTurretReference(UTankTurret* TurretToSet);
+
+	UFUNCTION(BlueprintCallable)
+	void Fire();
 	
 	void AimAt(FVector TargetLocation) const;
 
