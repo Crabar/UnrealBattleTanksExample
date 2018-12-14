@@ -39,9 +39,9 @@ void ATank::SetTurretReference(UTankTurret* TurretToSet)
 
 void ATank::Fire()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Fire!"));
+	auto isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
 
-	if (!Barrel)
+	if (!Barrel || !isReloaded)
 	{
 		return;
 	}
@@ -51,6 +51,7 @@ void ATank::Fire()
 	                                    Barrel->GetSocketRotation(FName("Projectile")));
 
 	Projectile->Launch(LaunchSpeed);
+	LastFireTime = FPlatformTime::Seconds();
 }
 
 void ATank::AimAt(FVector TargetLocation) const
