@@ -26,5 +26,5 @@ public:
 	ATank* GetControlledTank() const;
 
 	UPROPERTY(EditAnywhere)
-	float AimRange = 10000.f;
+	float AimRange = 20000.f;
 };
