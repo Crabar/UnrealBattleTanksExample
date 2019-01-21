@@ -51,8 +51,6 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto AimRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimRotator - BarrelRotator;
 
-	UE_LOG(LogTemp, Warning, TEXT("Yaw is %f nad Pitch is %f"), DeltaRotator.Yaw, DeltaRotator.Pitch);
-
 	float RotationAngle = 0;
 
 	if (FMath::Abs(DeltaRotator.Yaw) > 180)
