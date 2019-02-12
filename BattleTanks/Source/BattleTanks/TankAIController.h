@@ -20,4 +20,7 @@ private:
 	virtual void Tick(float DeltaSeconds) override;
 	ATank* PlayerTank = nullptr;
 	ATank* ControlledTank = nullptr;	
+
+	UPROPERTY(EditDefaultsOnly)
+	float AcceptanceRadius = 3000.f;
 };
