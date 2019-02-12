@@ -6,6 +6,7 @@
 #include "GameFramework/NavMovementComponent.h"
 #include "TankMovementComponent.generated.h"
 
+class UTankTrack;
 /**
  * 
  */
@@ -17,7 +18,15 @@ class BATTLETANKS_API UTankMovementComponent : public UNavMovementComponent
 	
 public:
 	UFUNCTION(BlueprintCallable)
-	void IntentMoveForward(float Throw);
+	void IntendMove(float Throw);
+
+	UFUNCTION(BlueprintCallable)
+	void IntendTurn(float Throw);
 	
-	
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void Initialise(UTankTrack* LeftTrack, UTankTrack* RightTrack);
+
+private:
+	UTankTrack* LeftTrack = nullptr;
+	UTankTrack* RightTrack = nullptr;	
 };

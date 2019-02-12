@@ -5,6 +5,11 @@
 
 void UTankTrack::SetThrottle(float Throttle)
 {
+	if (FMath::Abs(Throttle) < 0.01)
+	{
+		return;
+	}
+
 	auto Name = GetName();
 	UE_LOG(LogTemp, Warning, TEXT("%s throttle: %f"), *Name, Throttle);
 
